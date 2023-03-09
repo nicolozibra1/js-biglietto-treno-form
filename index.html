@@ -5,24 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biglietto del treno - Calcola il prezzo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- CALCOLATORE DEL PREZZO -->
-    <div id="container">
-            <input type="text" name="client-name" id="client-name">
-            <input type="number" name="mileage" id="mileage">
-            <input type="number" name="age" id="age">
-            <button class="generate">Genera</button>
-            <button class="cancel">Annulla</button>
-    </div>
-
+    <main>
+        <div class="container-fluid text-center py-5">
+            <h1 class="text-uppercase text-white">calcola il prezzo del tuo biglietto</h1>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div id="container" class="d-flex justify-content-around py-5">
+                    <input type="text" name="client-name" id="client-name">
+                    <input type="number" name="mileage" id="mileage">
+                    <input type="number" name="age" id="age">
+                    <button class="generate">Genera</button>
+                    <button class="cancel">Annulla</button>
+                </div>
+            </div>
+            <div class="container-fluid text-center py-5">
+                <h1 class="text-uppercase text-white">il tuo biglietto</h1>
+            </div>
+            <div class="card">
+                <div class="row">
+                    <div class="col-4 px-5">
+                        <h3 class="text-uppercase text-center py-2 fw-bold">dettaglio passeggeri</h3>
+                        <div class="box-name d-flex flex-column bg-dark-subtle">
+                            <h4 class="text-uppercase pt-3 px-3">nome passeggero</h4>
+                            <div id="print-nameclient" class="px-3 pt-3"></div>
+                        </div>
+                    </div>
+                    <div class="col col-8 py-5">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Km da percorrere</th>
+                                <th scope="col">Età</th>
+                                <th scope="col">Prezzo Totale</th>
+                                <th scope="col">Sconto</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><div id="print-mileage"></div></td>
+                                <td><div id="print-age"></div></td>
+                                <td><div id="total-price"></div></td>
+                                <td><div id="discount"></div></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- STAMPA DEL BIGLIETTO -->
-    <div id="print-nameclient"></div>
-    <div id="print-mileage"></div>
-    <div id="print-age"></div> 
-    <div id="total-price"></div>
-    <div id="discount"></div>
+        <div id="print-mileage"></div>
+        <div id="print-age"></div> 
+        <div id="total-price"></div>
+        <div id="discount"></div>
+    </main>
     <script src="./js/script.js"></script>
 </body>
 </html>

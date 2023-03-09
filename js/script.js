@@ -50,10 +50,11 @@ console.log(totalPrice);
 // creo due constanti contenenti i possibili sconti che verranno applicati sul prezzo del biglietto
 const discount20 = 0.20;
 const discount40 = 0.40;
-
 //creo due variabili che calcoleranno lo sconto da applicare sul prezzo finale
 let discountApplied20 = (totalPrice * discount20).toFixed(2);
 let discountApplied40 = totalPrice * discount40.toFixed(2);
+let discountNot = 0;
+
 
 // creo più condizioni che mi permettano di verificare -se e quale- sconto applicare al utente, sulla base delle informazioni che utente mi ha fornito
 if (age < 18) {
@@ -70,7 +71,7 @@ if (age < 18) {
     <h4>${age}</h4>
     `
     document.getElementById('total-price').innerHTML = `
-    <h2>${totalPrice}&euro;</h2>
+    <h4>${totalPrice}&euro;</h4>
     `
     document.getElementById('discount').innerHTML = `
     <h4>${discountApplied20}&euro;</h4>
@@ -91,7 +92,7 @@ if (age > 64) {
     <h4>${age}</h4>
     `
     document.getElementById('total-price').innerHTML = `
-    <h2>${totalPrice}&euro;</h2>
+    <h4>${totalPrice}&euro;</h4>
     `
     document.getElementById('discount').innerHTML = `
     <h4>${discountApplied40}&euro;</h4>
@@ -99,7 +100,7 @@ if (age > 64) {
 
 }
 else{
-    totalPrice = totalPrice;
+    totalPrice -= discountNot;
 
     document.getElementById('print-nameclient').innerHTML = `
     <h2>${clientName}</h2>
@@ -111,7 +112,7 @@ else{
     <h4>${age}</h4>
     `
     document.getElementById('total-price').innerHTML = `
-    <h2>${totalPrice}&euro;</h2>
+    <h4>${totalPrice}&euro;</h4>
     `
 }
 
