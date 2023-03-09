@@ -40,21 +40,47 @@ let discountApplied40 = totalPrice * discount40.toFixed(2);
 if (age < 18) {
     totalPrice -= discountApplied20;
     console.log(discountApplied20);
-    document.getElementById('price').innerHTML = `
+
+    document.getElementById('final-price').innerHTML = `
     <h2>${totalPrice}&euro;</h2>
     `
+    document.getElementById('mileage').innerHTML = `
+    <h4>${mileage}</h4>
+    `
+    document.getElementById('age').innerHTML = `
+    <h4>${age}</h4>
+    `
+    document.getElementById('discount').innerHTML = `
+    <h4>${discountApplied20}</h4>
+    `
+
 }
 if (age > 64) {
     totalPrice -= discountApplied40;
     console.log(discountApplied40);
-    document.getElementById('price').innerHTML = `
+    document.getElementById('final-price').innerHTML = `
     <h2>${totalPrice}&euro;</h2>
+    `
+    document.getElementById('mileage').innerHTML = `
+    <h4>${mileage}</h4>
+    `
+    document.getElementById('age').innerHTML = `
+    <h4>${age}</h4>
+    `
+    document.getElementById('discount').innerHTML = `
+    <h4>${discountApplied40}</h4>
     `
 }
 else{
     totalPrice = totalPrice;
-    document.getElementById('price').innerHTML = `
+    document.getElementById('final-price').innerHTML = `
     <h2>${totalPrice}&euro;</h2>
+    `
+    document.getElementById('mileage').innerHTML = `
+    <h4>${mileage}</h4>
+    `
+    document.getElementById('age').innerHTML = `
+    <h4>${age}</h4>
     `
 }
 

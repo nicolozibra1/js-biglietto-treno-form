@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
+    <!-- CALCOLATORE DEL PREZZO -->
+    <form action="">
+        <input type="text" name="client-name">
+        <input type="number" name="mileage">
+        <select name="age" id="choose-age">
+            <option value="junior">1-17</option>
+            <option value="adult">18-64</option>
+            <option value="senior">65-99+</option>
+        </select>
+        <button id="generate">Genera</button>
+        <button id="cancel">Annulla</button>
+    </form>
+
+    <!-- STAMPA DEL BIGLIETTO -->
+    <div id="age"></div>
+    <div id="mileage"></div>
+    <div id="discount"></div>
+    <div id="final-price"></div>
     <script src="./js/script.js"></script>
 </body>
 </html>
