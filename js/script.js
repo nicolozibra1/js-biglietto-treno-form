@@ -22,10 +22,13 @@ const mileageBox = document.querySelector('input[name="mileage"]')
 const ageBox = document.querySelector('input[name="age"]')
 
 //creo una funzione che mi permetta di ricevere i dati del utente al click del bottone
-const button = document.querySelector('.generate')
-console.log(button);
+const buttonCalc = document.querySelector('.generate')
+console.log(buttonCalc);
 
-button.addEventListener('click', function () {
+const buttonCanc = document.querySelector('.cancel')
+console.log(buttonCanc);
+
+buttonCalc.addEventListener('click', function () {
     let clientName = nameBox.value;
     let mileage = mileageBox.value;
     let age = ageBox.value;
@@ -113,6 +116,39 @@ else{
 }
 
 console.log(totalPrice);
+}
+ )
+
+buttonCanc.addEventListener('click', function () {
+    let clientName = "";
+    let mileage = "";
+    let age = "";
+    let totalPrice ="";
+    let discountApplied20 ="";
+    let discountApplied40 ="";
+
+    console.log(clientName);
+    console.log(mileage);
+    console.log(age);
+
+    document.getElementById('print-nameclient').innerHTML = `
+    <h2>${clientName}</h2>
+    `
+    document.getElementById('print-mileage').innerHTML = `
+    <h4>${mileage}</h4>
+    `
+    document.getElementById('print-age').innerHTML = `
+    <h4>${age}</h4>
+    `
+    document.getElementById('total-price').innerHTML = `
+    <h2>${totalPrice}</h2>
+    `
+    document.getElementById('discount').innerHTML = `
+    <h4>${discountApplied20}</h4>
+    `
+    document.getElementById('discount').innerHTML = `
+    <h4>${discountApplied40}</h4>
+    `
 }
  )
 
