@@ -33,10 +33,8 @@ button.addEventListener('click', function () {
     console.log(clientName);
     console.log(mileage);
     console.log(age);
-}
- )
 
-// // CALCULATOR
+    // // CALCULATOR
 // creo una constante contenente il prezzo fisso per km
 const priceForKm = 0.21;
 
@@ -59,48 +57,63 @@ if (age < 18) {
     totalPrice -= discountApplied20;
     console.log(discountApplied20);
 
-    document.getElementById('final-price').innerHTML = `
-    <h2>${totalPrice}&euro;</h2>
+    document.getElementById('print-nameclient').innerHTML = `
+    <h2>${clientName}</h2>
     `
-    document.getElementById('mileage').innerHTML = `
+    document.getElementById('print-mileage').innerHTML = `
     <h4>${mileage}</h4>
     `
-    document.getElementById('age').innerHTML = `
+    document.getElementById('print-age').innerHTML = `
     <h4>${age}</h4>
     `
+    document.getElementById('total-price').innerHTML = `
+    <h2>${totalPrice}&euro;</h2>
+    `
     document.getElementById('discount').innerHTML = `
-    <h4>${discountApplied20}</h4>
+    <h4>${discountApplied20}&euro;</h4>
     `
 
 }
 if (age > 64) {
     totalPrice -= discountApplied40;
     console.log(discountApplied40);
-    document.getElementById('final-price').innerHTML = `
-    <h2>${totalPrice}&euro;</h2>
+
+    document.getElementById('print-nameclient').innerHTML = `
+    <h2>${clientName}</h2>
     `
-    document.getElementById('mileage').innerHTML = `
+    document.getElementById('print-mileage').innerHTML = `
     <h4>${mileage}</h4>
     `
-    document.getElementById('age').innerHTML = `
+    document.getElementById('print-age').innerHTML = `
     <h4>${age}</h4>
     `
-    document.getElementById('discount').innerHTML = `
-    <h4>${discountApplied40}</h4>
+    document.getElementById('total-price').innerHTML = `
+    <h2>${totalPrice}&euro;</h2>
     `
+    document.getElementById('discount').innerHTML = `
+    <h4>${discountApplied40}&euro;</h4>
+    `
+
 }
 else{
     totalPrice = totalPrice;
-    document.getElementById('final-price').innerHTML = `
-    <h2>${totalPrice}&euro;</h2>
+
+    document.getElementById('print-nameclient').innerHTML = `
+    <h2>${clientName}</h2>
     `
-    document.getElementById('mileage').innerHTML = `
+    document.getElementById('print-mileage').innerHTML = `
     <h4>${mileage}</h4>
     `
-    document.getElementById('age').innerHTML = `
+    document.getElementById('print-age').innerHTML = `
     <h4>${age}</h4>
+    `
+    document.getElementById('total-price').innerHTML = `
+    <h2>${totalPrice}&euro;</h2>
     `
 }
 
 console.log(totalPrice);
+}
+ )
+
 
