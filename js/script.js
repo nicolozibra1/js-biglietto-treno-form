@@ -13,12 +13,30 @@
 
 // {MY SCRIPT}
 
-// creo due variabili che conterranno i dati in input del utente. (Valore di ritorno di un prompt)
-let mileage = prompt("Inserisci la quantità di km che vuoi percorrere");
-let age = prompt("Inserisci la tua età");
+// CLIENT FORM
+const container = document.getElementById('container')
 
-console.log(mileage + age);
+//creo tre variabili collegate agli input del form
+const nameBox = document.querySelector('input[name="client-name"]')
+const mileageBox = document.querySelector('input[name="mileage"]')
+const ageBox = document.querySelector('input[name="age"]')
 
+//creo una funzione che mi permetta di ricevere i dati del utente al click del bottone
+const button = document.querySelector('.generate')
+console.log(button);
+
+button.addEventListener('click', function () {
+    let clientName = nameBox.value;
+    let mileage = mileageBox.value;
+    let age = ageBox.value;
+
+    console.log(clientName);
+    console.log(mileage);
+    console.log(age);
+}
+ )
+
+// // CALCULATOR
 // creo una constante contenente il prezzo fisso per km
 const priceForKm = 0.21;
 
