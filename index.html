@@ -9,22 +9,56 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <main>
-        <div class="container-fluid text-center py-5">
-            <h1 class="text-uppercase text-white">calcola il prezzo del tuo biglietto</h1>
+    <header class="d-flex align-items-center">
+        <div class="box-logo ms-5">
+            <img class="w-100" src="./img/logo-trenord.png" alt="">
         </div>
+    </header>
+    <main>
+        <div class="container jumbo">
+            <img src="./img/hero.jpg" alt="">
+            <div class="container-fluid text-center pb-5">
+                <h1 class="text-uppercase text-white">calcola il prezzo del tuo biglietto</h1>
+            </div>
+        </div>
+        
         <div class="container">
-            <div class="card">
-                <div id="container" class="d-flex justify-content-around py-5">
-                    <input type="text" name="client-name" id="client-name">
-                    <input type="number" name="mileage" id="mileage">
-                    <input type="number" name="age" id="age">
-                    <button class="generate">Genera</button>
-                    <button class="cancel">Annulla</button>
+            <div class="card card-input">
+                <div class="card-header d-flex justify-content-center gap-5">
+                    <h5 class="text-uppercase">andata</h5>
+                    <h5 class="text-uppercase">ritorno</h5>
+                </div>
+                <div id="container" class="container-form">
+                    <div class="row d-flex justify-content-center">
+
+                        <div class="col-2 d-flex flex-column align-items-center">
+                            <label for="client-name" class=" pb-2 fw-bold">Nome e Cognome</label>
+                            <input type="text" name="client-name" id="client-name" placeholder="Inserisci il tuo nome e cognome">
+                        </div>
+                        <div class="col-2 d-flex flex-column align-items-center">
+                            <label for="mileage" class="pb-2 fw-bold">Km di percorrenza</label>
+                            <input type="number" name="mileage" id="mileage" placeholder="Inserisci i km da parcorrere">
+                        </div>  
+                        <div class="col-2 d-flex flex-column align-items-center">
+                            <label for="age" class="pb-2 fw-bold">Età del passeggero</label>
+                            <input type="number" name="age" id="age" placeholder="Inserisci la tua età">
+                        </div>
+                        <div class="col-2 d-flex flex-column align-items-center">
+                            <label for="date" class="pb-2 fw-bold">Data di partenza</label>
+                            <input type="date" name="date" id="age" placeholder="Inserisci la data di partenza">
+                        </div>
+                        <div class="col-2 d-flex flex-column align-items-center">
+                            <div class="box-button d-flex justify-content-center gap-4 py-4">   
+                                <button class="generate btn border-dark">Genera</button>
+                                <button class="cancel btn border-dark">Annulla</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             <div class="container-fluid text-center py-5">
-                <h1 class="text-uppercase text-white">il tuo biglietto</h1>
+                <h1 class="text-uppercase">il tuo biglietto</h1>
             </div>
             <div class="card">
                 <div class="row">
