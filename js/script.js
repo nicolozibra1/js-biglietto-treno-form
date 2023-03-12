@@ -5,121 +5,99 @@
 // va applicato uno sconto del 40% per gli over 65.
 // L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
-// MILESTONE 1:
-// Iniziamo implementando il programma senza alcuna estetica: usando esclusivamente due input e un bottone (non stilizzati), realizziamo le specifiche scritte sopra. La risposta finale (o output) sarà anch’essa da scrivere in console.
-// MILESTONE 2:
-// Solo una volta che il milestone 1 sarà completo e funzionante allora realizzeremo due caselle di input e almeno un bottone per inviare i dati in pagina, in cui l’utente potrà inserire i dati e poi visualizzare il calcolo finale con il prezzo.
-// Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagina (il prezzo dovrà essere formattato con massimo due decimali, per indicare i centesimi sul prezzo). Questo richiederà un minimo di ricerca.
-
 // {MY SCRIPT}
 
 // CLIENT FORM
-const container = document.getElementById('container')
+const container = document.getElementById('container');
 
-//creo tre variabili collegate agli input del form
-const nameBox = document.querySelector('input[name="client-name"]')
-const mileageBox = document.querySelector('input[name="mileage"]')
-const ageBox = document.querySelector('input[name="age"]')
+// INPUT DATA
+const nameBox = document.querySelector('input[name="client-name"]');
+const mileageBox = document.querySelector('input[name="mileage"]');
+const ageBox = document.getElementById('age');
+const dateBox = document.getElementById('date');
+// GET BUTTON GENERATE
+const buttonCalc = document.querySelector('.generate');
+console.dir(buttonCalc);
 
-//creo una funzione che mi permetta di ricevere i dati del utente al click del bottone
-const buttonCalc = document.querySelector('.generate')
-console.log(buttonCalc);
-
-const buttonCanc = document.querySelector('.cancel')
-console.log(buttonCanc);
-
+// FUNCTION ON CLICK
 buttonCalc.addEventListener('click', function () {
-    let clientName = nameBox.value;
-    let mileage = mileageBox.value;
+    const priceForKm = 0.21;
+    const discount20 = 0.20;
+    const discount40 = 0.40;
+    const carriage = getRndNumber(1, 9);
+    const seat = getRndNumber(1, 35).toString() + getRndLetter();
+
+    let clientName = nameBox.value.trim();  
+    let mileage = parseInt(mileageBox.value);
     let age = ageBox.value;
-
-    console.log(clientName);
-    console.log(mileage);
-    console.log(age);
-
+    if (clientName === '' || isNaN(mileage)) {
+        alert('Assicurati di aver inserito Nome e Cognome e/o la distanza da percorrere');
+        return;
+    }
+    let date = dateBox.value;
+    
     // // CALCULATOR
-// creo una constante contenente il prezzo fisso per km
-const priceForKm = 0.21;
+    let totalPrice = (mileage * priceForKm).toFixed(2);
+    let discountApplied20 = (totalPrice * discount20).toFixed(2);
+    let discountApplied40 = totalPrice * discount40.toFixed(2);
+    let discountNot = 0;
 
-console.log(priceForKm);
-// calcolo il costo totale sulla base di km da percorrere e prezzo per km
-let totalPrice = (mileage * priceForKm).toFixed(2);
+    switch (age) {
+        case 'minorenne': totalPrice -= discountApplied20;
+        break;
+        case 'over65': totalPrice -= discountApplied40;
+        break;
+    }
 
-console.log(totalPrice);
+    // PRINT GENERATE
 
-// creo due constanti contenenti i possibili sconti che verranno applicati sul prezzo del biglietto
-const discount20 = 0.20;
-const discount40 = 0.40;
-//creo due variabili che calcoleranno lo sconto da applicare sul prezzo finale
-let discountApplied20 = (totalPrice * discount20).toFixed(2);
-let discountApplied40 = totalPrice * discount40.toFixed(2);
-let discountNot = 0;
-
-
-// creo più condizioni che mi permettano di verificare -se e quale- sconto applicare al utente, sulla base delle informazioni che utente mi ha fornito
-if (age < 18) {
-    totalPrice -= discountApplied20;
-    console.log(discountApplied20);
-
+    // passenger details
     document.getElementById('print-nameclient').innerHTML = `
     <h2>${clientName}</h2>
     `
+    document.getElementById('print-age').innerHTML = `
+    <h2>${age}</h2>
+    `
+    if (ageBox.value == 'minorenne'){
+        document.getElementById('discount').innerHTML = `
+        <h2>Junior - sconto ${discountApplied20}&euro;</h2>
+        `}
+        else if (ageBox.value == 'over65'){
+        document.getElementById('discount').innerHTML = `
+        <h2>Senior - sconto ${discountApplied40}&euro;</h2>
+        `}
+        else if (ageBox.value != 'minorenne' && ageBox.value != 'over65'){
+        document.getElementById('discount').innerHTML = `
+        <h2>Standard</h2>
+        `}
+
     document.getElementById('print-mileage').innerHTML = `
     <h4>${mileage}</h4>
     `
-    document.getElementById('print-age').innerHTML = `
-    <h4>${age}</h4>
+    document.getElementById('print-carriage').innerHTML = `
+    <h4>${carriage}</h4>
+    `
+    document.getElementById('print-seat').innerHTML = `
+    <h4>${seat}</h4>
     `
     document.getElementById('total-price').innerHTML = `
     <h4>${totalPrice}&euro;</h4>
     `
-    document.getElementById('discount').innerHTML = `
-    <h4>${discountApplied20}&euro;</h4>
+    document.getElementById('print-date').innerHTML = `
+    <h4>${date}</h4>
     `
-
-}
-if (age > 64) {
-    totalPrice -= discountApplied40;
-    console.log(discountApplied40);
-
-    document.getElementById('print-nameclient').innerHTML = `
-    <h2>${clientName}</h2>
-    `
-    document.getElementById('print-mileage').innerHTML = `
-    <h4>${mileage}</h4>
-    `
-    document.getElementById('print-age').innerHTML = `
-    <h4>${age}</h4>
-    `
-    document.getElementById('total-price').innerHTML = `
-    <h4>${totalPrice}&euro;</h4>
-    `
-    document.getElementById('discount').innerHTML = `
-    <h4>${discountApplied40}&euro;</h4>
-    `
-
-}
-else{
-    totalPrice -= discountNot;
-
-    document.getElementById('print-nameclient').innerHTML = `
-    <h2>${clientName}</h2>
-    `
-    document.getElementById('print-mileage').innerHTML = `
-    <h4>${mileage}</h4>
-    `
-    document.getElementById('print-age').innerHTML = `
-    <h4>${age}</h4>
-    `
-    document.getElementById('total-price').innerHTML = `
-    <h4>${totalPrice}&euro;</h4>
-    `
-}
-
-console.log(totalPrice);
+    document.querySelector('.discount-banner').classList.add('d-none');
+    document.querySelector('.card-output').classList.toggle('d-none');
+    document.querySelector('.container-output').classList.toggle('d-none');
 }
  )
 
+
+// GET BUTTON CANC
+const buttonCanc = document.querySelector('.cancel');
+console.dir(buttonCanc);
+
+// FUNCTION ON CLICK
 buttonCanc.addEventListener('click', function () {
     let clientName = "";
     let mileage = "";
@@ -128,10 +106,7 @@ buttonCanc.addEventListener('click', function () {
     let discountApplied20 ="";
     let discountApplied40 ="";
 
-    console.log(clientName);
-    console.log(mileage);
-    console.log(age);
-
+    // PRINT DELETE
     document.getElementById('print-nameclient').innerHTML = `
     <h2>${clientName}</h2>
     `
@@ -150,6 +125,10 @@ buttonCanc.addEventListener('click', function () {
     document.getElementById('discount').innerHTML = `
     <h4>${discountApplied40}</h4>
     `
+    document.querySelector('.discount-banner').classList.remove('d-none');
+    document.querySelector('.card-output').classList.toggle('d-none');
+    document.querySelector('.container-output').classList.toggle('d-none');
+
 }
  )
 

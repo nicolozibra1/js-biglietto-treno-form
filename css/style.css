@@ -21,12 +21,26 @@ header{
     bottom:80px;
     left: 300px;
 }
-
-#print-nameclient h2{
-    font-size: 1.2rem;
-    font-style: bold;
+.generate:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #013A40;
 }
-
+.cancel:hover{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(141, 13, 13);
+}
+.highlighter{
+    color: #F25C05;
+}
+#print-nameclient h2, #print-age h2, #discount h2{
+    font-size: 0.8rem;
+    margin-top: -5px;
+}
+#print-date h4{
+    font-size: 0.8rem;
+}
 thead th{
     width: calc(100% / 4);
 }
@@ -34,7 +48,13 @@ thead th{
 #container input{
     width: 75%;
     border: none;
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid #013A40;
+    padding-bottom: 5px;
+}
+#age{
+    width: 75%;
+    border: none;
+    border-bottom: 2px solid #013A40;
     padding-bottom: 5px;
 }
 .card-input{
@@ -46,8 +66,10 @@ thead th{
     background-color:white;
 }
 .card-output{
+    margin-bottom: 50px;
     background-color:#013A40;
 }
 .box-name{
     background-color: #F2EFEB;
+    margin-bottom: 20px;
 }
